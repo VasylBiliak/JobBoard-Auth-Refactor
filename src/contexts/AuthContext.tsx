@@ -34,10 +34,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }, []);
 
     const signInWithGoogle = async () => {
+        const redirectUrl = import.meta.env.VITE_SUPABASE_REDIRECT_URL;
+        if (!redirectUrl) {
+            throw new Error('VITE_SUPABASE_REDIRECT_URL is not defined');
+        }
+
         const { error } = await supabase.auth.signInWithOAuth({
             provider: 'google',
             options: {
-                redirectTo: import.meta.env.VITE_REDIRECT_URL || window.location.origin,
+                redirectTo: redirectUrl,
             },
         });
         if (error) throw error;
