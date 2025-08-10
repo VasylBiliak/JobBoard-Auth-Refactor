@@ -4,7 +4,7 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 const redirectTo = import.meta.env.VITE_SUPABASE_REDIRECT_URL;
 
-console.log('VITE_SUPABASE_REDIRECT_URL in supabase.ts:', redirectTo); // Додай для дебагу
+console.log('VITE_SUPABASE_REDIRECT_URL in supabase.ts:', redirectTo);
 
 if (!supabaseUrl || !supabaseAnonKey) {
     throw new Error('Supabase URL or Anon Key is missing');
